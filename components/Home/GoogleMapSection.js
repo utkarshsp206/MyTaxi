@@ -15,8 +15,8 @@ function GoogleMapSection() {
   const {destination,setDestination}=useContext(DestinationContext);
 
   const [center,setCenter]=useState({
-    lat: -3.745,
-    lng: -38.523
+    lat: 28.6139,
+    lng: 77.2090
   });
 
 
