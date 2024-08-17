@@ -1,7 +1,7 @@
 export const CarListData = [
     {
         id: 1,
-        name: 'Uber X',
+        name: 'Mini',
         seat: 4,
         desc: 'Affordable, Everyday rides',
         amount: 1.1,
@@ -17,7 +17,7 @@ export const CarListData = [
     },
     {
         id: 3,
-        name: 'UberXL',
+        name: 'ComfiXL',
         seat: 6,
         desc: 'Affordable rides for groups up to 6',
         amount: 1.9,
@@ -25,7 +25,7 @@ export const CarListData = [
     },
     {
         id: 4,
-        name: 'Uber Pet',
+        name: 'Pet Friendly',
         seat: 4,
         desc: 'Affordable rides for you and your pet',
         amount: 1.4,
@@ -33,10 +33,10 @@ export const CarListData = [
     },
     {
         id: 5,
-        name: 'Black',
+        name: 'Premium Sedan',
         seat: 4,
         desc: 'Affordable, Everyday rides',
-        amount: 1.1,
+        amount: 2,
         image: '/Black_v1.png'
     },
 
