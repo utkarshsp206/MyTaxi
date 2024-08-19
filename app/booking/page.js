@@ -38,6 +38,7 @@ function BookingPage() {
         setDistance(dist);
         setSource(sourceLoc);
         setDestination(destinationLoc);
+
         const cost = (car.amount * dist).toFixed(2);
         setTotalAmount(cost);
         setDiscountedAmount(cost);
@@ -59,7 +60,38 @@ function BookingPage() {
     }
   };
 
-  const handlePayment = (paymentType) => {
+  // const handlePayment = (paymentType) => {
+  //   const finalAmount = discountedAmount * travellers;
+  //   console.log({
+  //     name,
+  //     mobile,
+  //     email,
+  //     travellers,
+  //     bookEntireCab,
+  //     voucherCode,
+  //     totalAmount: finalAmount,
+  //     paymentType,
+  //     source,
+  //     destination,
+  //   });
+  
+  //   if (paymentType === 'online') {
+  //     // Redirect to payment page with the amount
+  //     // router.push('/payment?amount=' + (selectedCar.amount * distance).toFixed(2));
+  //     router.push('/payment?amount=' + finalAmount);
+  //   } else if (paymentType === 'payAtDestination') {
+  //     // Redirect to payment confirmation page
+  //     router.push('/payment-confirm');
+  //   } else {
+  //     // Handle any other payment type or show an error
+  //     alert('Invalid payment type');
+  //   }
+  
+  //   alert(`Booking confirmed! Payment Method: ${paymentType}`);
+  // };
+
+  const handlePayment = async (paymentType) => {
+    const finalAmount = discountedAmount * travellers;
     console.log({
       name,
       mobile,
@@ -67,26 +99,43 @@ function BookingPage() {
       travellers,
       bookEntireCab,
       voucherCode,
-      totalAmount: discountedAmount,
+      totalAmount: finalAmount,
       paymentType,
       source,
       destination,
     });
   
-    if (paymentType === 'online') {
-      // Redirect to payment page with the amount
-      // router.push('/payment?amount=' + (selectedCar.amount * distance).toFixed(2));
-      router.push('/payment?amount=' + discountedAmount);
-    } else if (paymentType === 'payAtDestination') {
-      // Redirect to payment confirmation page
-      router.push('/payment-confirm');
-    } else {
-      // Handle any other payment type or show an error
-      alert('Invalid payment type');
+    // Send form data to the API route
+    try {
+      await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          mobile,
+          source,
+          destination,
+          totalAmount: finalAmount,
+          paymentType,
+        }),
+      });
+      if (paymentType === 'online') {
+        router.push('/payment?amount=' + finalAmount);
+      } else if (paymentType === 'payAtDestination') {
+        router.push('/payment-confirm');
+      } else {
+        alert('Invalid payment type');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('An error occurred while sending the email.');
     }
-  
-    alert(`Booking confirmed! Payment Method: ${paymentType}`);
   };
+
+  
 
   if (!selectedCar) {
     return <div>Loading...</div>;
@@ -99,9 +148,9 @@ function BookingPage() {
         <h2 className="text-[20px] font-bold">{selectedCar.name}</h2>
         <p>Source: {source}</p>
         <p>Destination: {destination}</p>
-        <p>Distance: {distance.toFixed(2)} miles</p>
-        <p>Rate per mile: ${selectedCar.amount}</p>
-        <p className="mt-2 text-[18px] font-bold">Total Amount: ${discountedAmount}</p>
+        {/* <p>Distance: {distance.toFixed(2)} miles</p> */}
+        <p>Rate per person: ${discountedAmount}</p>
+        <p className="mt-2 text-[18px] font-bold">Total Amount: ${discountedAmount * travellers}</p>
       </div>
 
       <div className="mt-5">
