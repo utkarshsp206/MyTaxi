@@ -22,7 +22,7 @@ export default function Home() {
       <DestinationContext.Provider value={{destination,setDestination}}>
       <LoadScript 
       libraries={['places']}
-      googleMapsApiKey={"AIzaSyDCKU-ws2HrSwwLdeAxx6ysfjLqaJJReZo"}>
+      googleMapsApiKey={""}>
       <div className='p-6 grid grid-cols-1 md:grid-cols-3 gap-5'>
         <div>
             <SearchSection/>
