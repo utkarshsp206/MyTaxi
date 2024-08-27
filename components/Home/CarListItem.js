@@ -1,6 +1,15 @@
 import Image from 'next/image'
 import React from 'react'
 import { HiUser } from "react-icons/hi2";
+
+const pricingMap = {
+    "Chennai-Mumbai": 100,
+    "New Delhi-Bangalore": 100,
+    "New Delhi-Chennai": 150,
+    "New Delhi-Kolkata": 400,
+    // Add other combinations here
+};
+
 function CarListItem({car,distance}) {
   return (
     <div>
@@ -22,10 +31,12 @@ function CarListItem({car,distance}) {
                 </div>
             </div>
             <h2 className='text-[18px] font-semibold'>
-                ${(car.amount*distance).toFixed(2)}</h2>
+                ₹{(car.amount*distance).toFixed(2)}</h2>  
         </div>
     </div>
   )
 }
 
-export default CarListItem
+
+  
+  export default CarListItem;
