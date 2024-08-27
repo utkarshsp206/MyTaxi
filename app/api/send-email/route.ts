@@ -10,7 +10,7 @@ export async function POST(req) {
     <p><strong>Email Address:</strong> ${email}</p>
     <p><strong>Source:</strong> ${source}</p>
     <p><strong>Destination:</strong> ${destination}</p>
-    <p><strong>Total Amount:</strong> $${totalAmount.toFixed(2)}</p>
+    <p><strong>Total Amount:</strong> ₹${totalAmount.toFixed(2)}</p>
     <p><strong>Payment Type:</strong> ${paymentType}</p>
   `;
 
