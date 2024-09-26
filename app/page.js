@@ -33,7 +33,7 @@ export default function Home() {
       </Head>
       <SourceContext.Provider value={{ source, setSource }}>
         <DestinationContext.Provider value={{ destination, setDestination }}>
-          <div className='p-6 grid grid-cols-1 md:grid-cols-3 gap-5'>
+          <div className='p-6 grid grid-cols-1 md:grid-cols-3 gap-5' style={{'paddingTop':'150px'}}>
             <div>
               <SearchSection />
             </div>

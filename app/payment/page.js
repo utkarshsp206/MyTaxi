@@ -16,9 +16,14 @@ function Payment() {
     currency:'usd'
   }
   return (
+    <div style={{
+      paddingTop: '80px',
+      
+    }}> 
     <Elements stripe={stripePromise} options={options}>
         <CheckoutForm amount={amount} />
     </Elements>
+    </div>
   )
 }
 

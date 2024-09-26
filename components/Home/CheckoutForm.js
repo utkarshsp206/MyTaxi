@@ -58,7 +58,7 @@ function CheckoutForm({amount}) {
         </form>
         <button 
                 onClick={handlePayOnDelivery} 
-                className='w-full bg-gray-500 text-white p-2 rounded-lg mt-2'>
+                className='bg-gray-500 text-white p-2 rounded-lg mt-2'>
                 Pay on Delivery
             </button>
     </div>

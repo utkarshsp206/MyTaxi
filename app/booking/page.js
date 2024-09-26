@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
-import { CarListData } from './../../utils/CarListData';  
+import { CarListData } from './../../utils/CarListData';
 import Image from 'next/image';
+import './page.css'
 
 function BookingPage() {
     const router = useRouter();
@@ -33,7 +34,7 @@ function BookingPage() {
         const dist = parseFloat(searchParams.get('distance'));
         const sourceLoc = searchParams.get('source');
         const destinationLoc = searchParams.get('destination');
-        
+
         if (carName && !isNaN(dist)) {
             const car = CarListData.find(car => car.name === carName);
             if (car) {
@@ -116,7 +117,7 @@ function BookingPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 md:p-6">
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 md:p-6" style={{ paddingTop: '150px' }}>
             {loading ? (
                 <div className="flex flex-col items-center justify-center">
                     <Image src="/loading-spinner.gif" alt="Loading..." width={50} height={50} />
@@ -126,18 +127,37 @@ function BookingPage() {
                 <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Left Section: Image */}
                     <div className="hidden md:block">
-                        <Image
-                            src="/your-image.png"  // Replace with your image path
+                    <Image
+                            src="/your-image.jpg"  // Replace with your image path
                             alt="Booking Image"
                             layout="responsive"
                             width={500}
                             height={500}
                             className="rounded-lg shadow-md"
+                            style={{margin:'10px'}}
+                        />
+                        <Image
+                            src="/your-image2.jpg"  // Replace with your image path
+                            alt="Booking Image"
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            className="rounded-lg shadow-md"
+                            style={{margin:'10px'}}
+                        />
+                        <Image
+                            src="/your-image.svg"  // Replace with your image path
+                            alt="Booking Image"
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            className="rounded-lg shadow-md"
+                            style={{margin:'10px'}}
                         />
                     </div>
 
                     {/* Right Section: Booking Form and Details */}
-                    <div className="md:col-span-2 bg-white rounded-lg shadow-md p-6 md:p-8">
+                    <div className="md:col-span-2 rounded-lg shadow-md p-6 md:p-8" style={{ backgroundColor: '#ffd457' }}>
                         <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">Booking Details</h1>
                         <div className="bg-gray-100 p-6 rounded-lg shadow-sm mb-6">
                             <h2 className="text-xl font-semibold text-gray-700 mb-2">{selectedCar.name}</h2>

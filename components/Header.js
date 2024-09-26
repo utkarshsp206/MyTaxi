@@ -1,53 +1,53 @@
-"use client"
-import { UserButton } from '@clerk/nextjs'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import React from 'react'
+"use client";
+import { UserButton } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
+import React, { useEffect } from "react";
+import './Header.css'
 
 function Header() {
-    const router = useRouter();
-    const headerMenu = [
-        { id: 1, name: 'Ride', icon: '/taxi.svg', route: '/' },
-        { id: 2, name: 'Package', icon: '/box.svg', route: '/package' },
-        { id: 3, name: 'About', icon: '/about.svg', route: '/about' },
-        { id: 4, name: 'Contact', icon: '/contact.svg', route: '/contact' },
-    ]
+  const router = useRouter();
 
-    return (
-        <div className='p-5 pb-3 pl-10 border-b-[4px] border-gray-200 flex items-center justify-between bg-black'>
-            <div className='flex items-center'>
-                <Image 
-                    src='/logo.png'
-                    width={70} 
-                    height={70}
-                    alt='Logo' 
-                    className='cursor-pointer'
-                    onClick={() => router.push('/home')} 
-                />
-            </div>
-            <div className='flex space-x-8'>
-                {headerMenu.map((item) => (
-                    <div 
-                        key={item.id} 
-                        className='flex items-center space-x-2 cursor-pointer text-yellow-500 hover:text-yellow-300'
-                        onClick={() => router.push(item.route)}
-                    >
-                        <Image 
-                            src={item.icon} 
-                            width={24} 
-                            height={24} 
-                            alt={item.name} 
-                            className='text-yellow-500'
-                        />
-                        <span className='text-lg font-medium'>{item.name}</span>
-                    </div>
-                ))}
-            </div>
-            <div className='flex items-center'>
-                <UserButton />
-            </div>
-        </div>
-    )
+  useEffect(() => {
+    const menuBtn = document.getElementById("menu-btn");
+    const navLinks = document.getElementById("nav-links");
+    const menuBtnIcon = menuBtn.querySelector("i");
+
+    menuBtn.addEventListener("click", (e) => {
+      navLinks.classList.toggle("open");
+
+      const isOpen = navLinks.classList.contains("open");
+      menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
+    });
+
+    navLinks.addEventListener("click", (e) => {
+      navLinks.classList.remove("open");
+      menuBtnIcon.setAttribute("class", "ri-menu-line");
+    });
+  }, []);
+
+  return (
+    <nav>
+      <div class="nav__logo">
+        <a href="/home">
+          <img src="assets/logo-color.png" alt="logo" class="logo-color" />
+          <img src="assets/logo-white.png" alt="logo" class="logo-white" />
+        </a>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/home">About Us</a></li>
+        <li><a href="/">Booking</a></li>
+        <li><a href="/home">Contact Us</a></li>
+      </ul>
+      <div class="nav__menu__btn" id="menu-btn">
+        <span><i class="ri-menu-line"></i></span>
+      </div>
+      <div class="nav_userbtn">
+        <UserButton/>
+      </div>
+    </nav>
+  );
+
 }
 
-export default Header
+export default Header;

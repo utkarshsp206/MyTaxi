@@ -1,0 +1,51 @@
+.banner {
+    /* margin-top: 5rem; */
+    display: grid;
+    grid-template-columns: 1fr; /* Use a single column */
+    gap: 1rem; /* Add a gap between banners */
+  }
+  
+  .banner__card {
+    padding: 2rem;
+  }
+  
+  .banner__card:nth-child(1) {
+    position: relative;
+    isolation: isolate;
+    /* padding-block: 5rem; */
+    background-color: #ffd457;
+    border-radius: 15px;
+  }
+  
+  .banner__card:nth-child(2) {
+    background-color: #ffd457;
+    border-radius: 15px;
+  }
+  
+  .banner__card:nth-child(3) {
+    background-color: #ffc823;
+    border-radius: 15px;
+  }
+  
+  .banner__card:nth-child(4) {
+    background-color: #ffad23;
+    border-radius: 15px;
+  }
+  
+  .banner__card h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-dark);
+  }
+  
+  .banner__card p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+  }
+  
+  .banner__card a {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+  }

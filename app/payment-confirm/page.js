@@ -9,18 +9,21 @@ function PaymentConfirmation() {
   return (
     <div className='bg-[#f1f1f1] flex
     h-screen
-    items-center justify-center flex-col'>
-        <h2 className='text-[30px] z-20 mt-[-30px]'>Booking Confimed</h2>
-        <Image src='/uberconfirm.gif'
-        width={500}
-        height={150}
-        className='object-cover mt-[-60px]'
-        />
-        <h2 className='font-bold 
-        text-[23px] mt-[-20px] mb-10'>Seat is Booked Successfully</h2>
+    items-center justify-center flex-col' style={{paddingTop:'150px',backgroundImage: `url('/Confirmation.png')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'}}>
+         {/* <div 
+    className="absolute top-0 left-0 w-full h-full"
+    style={{
+      backgroundImage: `url('/Confirmation.png')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }}
+  /> */}
+        <div style={{padding:'100px'}}></div>
         <button className='p-2 bg-black text-white
         px-10 rounded-lg'
-        onClick={()=>route.push('/')}
+        onClick={()=>route.push('/home')}
         >Go Home</button>
     </div>
   )
